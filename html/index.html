@@ -1,0 +1,30 @@
+<html>
+<head>
+<body>
+body start
+<script type="text/javascript" src="./jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="./idList.js"></script>
+<script type="text/javascript">
+console.log('start');
+
+var openNum = 5;
+var openChart = function(offset) {
+  for (var i=offset; i < openNum + offset;i++) {
+	window.open("http://kabutan.jp/stock/chart?code=" + idList[i]);
+  }
+};
+
+$(function(){
+var loopNum = parseInt(idList.length / openNum);
+console.log('xxx');
+for (var j=0; j < loopNum; j++) {
+console.log('yy');
+  var k = j*openNum;
+  $('#chartLinks').append('<a href="" onclick="openChart(' + k + ');false">to' + (k+openNum) + '</a><br>');
+}
+});
+
+console.log('end');
+</script>
+<div id="chartLinks"></div>
+
